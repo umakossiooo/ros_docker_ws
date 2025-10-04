@@ -7,6 +7,13 @@ This project uses Docker Compose to simplify the setup and management of ROS 2 J
 - Docker installed
 - Docker Compose installed
 
+### Use this commands to install Docker & Docker Compose if you haven't already
+	```bash
+	sudo snap install docker
+	sudo apt install docker-compose
+	```
+
+
 ### Usage
 
 1. **Build the Docker image:**
