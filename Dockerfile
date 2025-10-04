@@ -18,14 +18,6 @@ RUN apt-get update && apt-get install -y \
     ros-jazzy-xacro \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy and configure OSM2World
-COPY OSM2World-0.4.0-bin.zip /tmp/OSM2World.zip
-RUN mkdir -p /opt/osm2world /usr/local/bin && \
-    unzip /tmp/OSM2World.zip -d /opt/osm2world && \
-    rm /tmp/OSM2World.zip && \
-    echo '#!/bin/bash\ncd /opt/osm2world\nvmparams="--add-exports java.base/java.lang=ALL-UNNAMED --add-exports java.desktop/sun.awt=ALL-UNNAMED --add-exports java.desktop/sun.java2d=ALL-UNNAMED"\njava $vmparams -jar OSM2World.jar "$@"' > /usr/local/bin/osm2world && \
-    chmod +x /usr/local/bin/osm2world
-
 # Install additional ROS dependencies
 RUN apt-get update && apt-get install -y \
     ros-jazzy-controller-manager \
