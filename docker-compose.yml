@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  ros2_jazzy_dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ros2:jazzy-dev
+    container_name: ros2_jazzy_dev_osm_3
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./ros_projects/robot_simulation:/root/ros2_ws/src/robot_simulation
+      - ./ros_projects/ros2_navigation:/root/ros2_ws/src/ros2_navigation
+      - ./ros_projects/ros_fundamentals:/root/ros2_ws/src/ros_fundamentals
+      - ./ros_projects/URDF_arm:/root/ros2_ws/src/URDF_arm
+    network_mode: host
+    tty: true
+    stdin_open: true
